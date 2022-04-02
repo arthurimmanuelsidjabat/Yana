@@ -155,7 +155,7 @@ function default_elementor_options() {
 add_filter('admin_footer_text', 'remove_footer_admin');
 function remove_footer_admin () {
     $today = date("Y");
-    echo '<span id="thankyou">&copy;' . $today . ' Cekindo Business International, Ltd.</span>';
+    echo '<span id="thankyou">&copy;' . $today . ' Arthur Immanuel</span>';
 }
 
 /** Disable Guttenber Editor on Widget */

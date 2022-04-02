@@ -134,6 +134,7 @@ $cptFolder = __DIR__ . '/../custom-post-type';
 $cptPosts_Types = array (
 
     '/services.php', // Service
+    '/sliders.php', // Sliders
 
 );
 // Required
@@ -151,7 +152,7 @@ $reqFiles = array (
     '/blog-slug.php', // Blog Slug
     '/clean-head.php', // Clean up default WordPress <head>
     '/thumb-sizes.php', // Custom thumbnail size for uploaded image
-    '/nav-cta-btn.php', // CTA Button for Navigation Bar
+    '/clean-archive-title.php', // Clean archive title
 
 );
 // Required

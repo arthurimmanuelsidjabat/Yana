@@ -2,7 +2,7 @@
 /**
  * Register Services Custom Post Type
  *
- * @package Cekindo
+ * @package Yana
  * @author  Arthur Immanuel
  */
 

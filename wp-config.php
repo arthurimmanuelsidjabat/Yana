@@ -94,6 +94,9 @@ define( 'AUTOSAVE_INTERVAL', 14400 );
 /** Disable the Theme and Plugin Editors */
 define( 'DISALLOW_FILE_EDIT', true );
 
+/** BS5 Blocks */
+define( 'WP_BOOTSTRAP_BLOCKS_BOOTSTRAP_VERSION', '5' );
+
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */

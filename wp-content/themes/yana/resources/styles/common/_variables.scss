@@ -1,0 +1,42 @@
+/** Typography */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,700;1,700&display=swap');
+
+// Navigation
+@include media-breakpoint-up(sm) {
+    .nav-lg-fill {
+        & .nav-item {
+            flex: 1 1 auto;
+            text-align: center;
+        }
+    }
+    .navbar-light {
+        & .navbar-nav {
+            & .nav-link {
+                &:hover {
+                    background-color: #6610f2;
+                }
+                &.active {
+                    background-color: #0d6efd;
+                }
+                &:hover,
+                &.active {
+                    color: rgba(255,255,255,1);
+                }
+            }
+        }
+    }
+}
+
+// Priority Position Avsolute
+.z-index- {
+    &5 {
+        z-index: 5;
+    }
+    &10 {
+        z-index: 10;
+    }
+    &15 {
+        z-index: 15;
+    }
+}

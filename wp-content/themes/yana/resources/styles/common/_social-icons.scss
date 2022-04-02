@@ -1,0 +1,9 @@
+.social-icon-container {
+    & .social-icon {
+        font-size: 1.25rem;
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+}

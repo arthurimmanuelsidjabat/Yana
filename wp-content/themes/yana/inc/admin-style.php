@@ -18,6 +18,9 @@ function custom_admin_style()
         #adminmenu #menu-posts-service div.wp-menu-image:before {
             color:#007bff
         }
+        #adminmenu #menu-posts-slider div.wp-menu-image:before {
+            color:#6f42c1
+        }
     </style>
     
     ';
