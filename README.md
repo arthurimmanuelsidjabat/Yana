@@ -4,6 +4,9 @@ WordPress theme for Company Profile using Sage from ROOTS.io
 # Demo
 Visit https://hamanami.arthurimmanuel.com/yana/ for demo preview
 
+# Plugins
+This theme using <a href="https://wordpress.org/plugins/fluentform/">FluentForms Plugins</a>
+
 # Custom Post Type
 This theme was built with 3 custom post type: Services, Sliders, &amp; Team Member
 - Services:
