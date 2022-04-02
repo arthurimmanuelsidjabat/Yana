@@ -133,6 +133,7 @@ add_action('widgets_init', function () {
 $cptFolder = __DIR__ . '/../custom-post-type';
 $cptPosts_Types = array (
 
+    '/teams.php', // Team
     '/services.php', // Service
     '/sliders.php', // Sliders
 

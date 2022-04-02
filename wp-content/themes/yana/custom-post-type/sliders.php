@@ -2,7 +2,7 @@
 /**
  * Register Slider Custom Post Type
  *
- * @package Yana
+ * @package Hamanami
  * @author  Arthur Immanuel
  */
 

@@ -1,5 +1,5 @@
-<footer id="footer" class="footer-content-info" itemscope itemtype="http://schema.org/WPFooter" itemscope>
-    
+<footer id="footer" class="footer-content-info bg-light" itemscope itemtype="http://schema.org/WPFooter" itemscope>
+
     @php(dynamic_sidebar('sidebar-footer'))
 
     <div class="container">

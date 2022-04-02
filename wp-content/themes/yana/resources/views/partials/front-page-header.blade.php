@@ -13,7 +13,7 @@
     $inc=1;
 @endphp
 
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+<div id="carouselFrontpageFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
         @while ($query->have_posts())
         @php $query->the_post() @endphp
@@ -32,8 +32,8 @@
                                 <h2 class="display-5 fw-bolder text-white mb-2">@php the_title() @endphp</h2>
                                 @if ( has_excerpt() ) @php echo '<p class="lead text-white mb-4">' . get_the_excerpt() . '</p>' @endphp @endif
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="/contact/">@php echo esc_html__( 'Get Started', 'yana' ) @endphp</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="/services/">@php echo esc_html__( 'Learn More', 'yana' ) @endphp</a>
+                                    <a class="btn btn-dark btn-lg px-4 me-sm-3" href="/contact/">@php echo esc_html__( 'Get Started', 'hamanami' ) @endphp</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="/services/">@php echo esc_html__( 'Learn More', 'hamanami' ) @endphp</a>
                                 </div>
                             </div>
                         </div>
@@ -44,12 +44,12 @@
         @endwhile
         @php wp_reset_postdata() @endphp
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFrontpageFade" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">@php echo esc_html__( 'Previous', 'yana' ) @endphp</span>
+        <span class="visually-hidden">@php echo esc_html__( 'Previous', 'hamanami' ) @endphp</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselFrontpageFade" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">@php echo esc_html__( 'Next', 'yana' ) @endphp</span>
+        <span class="visually-hidden">@php echo esc_html__( 'Next', 'hamanami' ) @endphp</span>
     </button>
 </div>

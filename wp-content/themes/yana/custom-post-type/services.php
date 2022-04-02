@@ -2,7 +2,7 @@
 /**
  * Register Services Custom Post Type
  *
- * @package Yana
+ * @package Hamanami
  * @author  Arthur Immanuel
  */
 

@@ -28,6 +28,17 @@
     }
 }
 
+// Content
+@include media-breakpoint-up(sm) {
+    .single {
+        & .entry-content {
+            & .container {
+                max-width: 768px;
+            }
+        }
+    }
+}
+
 // Priority Position Avsolute
 .z-index- {
     &5 {

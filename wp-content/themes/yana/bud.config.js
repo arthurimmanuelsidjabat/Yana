@@ -32,7 +32,7 @@ module.exports = async (app) => {
      *
      * This should be the URL you use to visit your local development server.
      */
-    .proxy('http://yana.test')
+    .proxy('https://hamanami.arthurimmanuel.com/yana')
 
     /**
      * Development URL to be used in the browser.
