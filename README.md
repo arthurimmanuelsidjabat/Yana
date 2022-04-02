@@ -1,5 +1,5 @@
 # Yana
-WordPress theme for Company Profile using Sage from ROOTS.io
+WordPress theme for Company Profile using <a href="https://roots.io/sage/">Sage from ROOTS.io</a>
 
 # Demo
 Visit https://hamanami.arthurimmanuel.com/yana/ for demo preview
