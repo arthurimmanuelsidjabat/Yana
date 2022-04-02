@@ -7,13 +7,13 @@ Visit https://hamanami.arthurimmanuel.com/yana/ for demo preview
 # Custom Post Type
 This theme was built with 3 custom post type: Services, Sliders, &amp; Team Member
 - Services:
-<img alt="Service Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-service.jpg" width="1920" height="923" />
+<img alt="Service Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-service.jpg" />
 
 - Sliders:
-<img alt="Slider Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-slider.jpg" width="1920" height="923" />
+<img alt="Slider Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-slider.jpg" />
 
 - Teams:
-<img alt="Teams Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-team.jpg" width="1920" height="923" />
+<img alt="Teams Custom Post Type" src="https://arthurimmanuel.com/assets/img/yana-team.jpg" />
 
 # Installation
 - Download this WordPress Repository Installation
