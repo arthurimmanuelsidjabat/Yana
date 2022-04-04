@@ -3,9 +3,10 @@
 <section class="py-5">
 	<div class="container px-lg-5 my-lg-5">
         <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-6">
+            <div class="col-lg-9 col-xl-7">
                 <div class="text-lg-center">
-                    <h2 class="mb-3 text-success">@php echo esc_html__( 'Maximise Your Business Potentials', 'hamanami' ) @endphp</h2>
+                    <h2 class="h1">@php echo esc_html__( '☕', 'hamanami' ) @endphp</h2>
+                    <h2 class="h1 mb-3">@php echo esc_html__( 'Maximise Your Business Potentials', 'hamanami' ) @endphp</h2>
                     <p class="mb-0">@php echo esc_html__( 'To make sure that you have a seamless experience in starting a business.', 'hamanami' ) @endphp</p>
                     <p class="mb-0">@php echo esc_html__( 'Through our full range of our services, you can have peace of mind and enjoy hasle-free market entry activities.', 'hamanami' ) @endphp</p>
                 </div>
@@ -32,7 +33,7 @@
 			@while ($query->have_posts())
 			@php $query->the_post() @endphp
 			<div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="card h-100">
+                <div class="card h-100 border-0 shadow-mg">
                     @if ( has_post_thumbnail () )
                         {!!
                             the_post_thumbnail( 'w600',

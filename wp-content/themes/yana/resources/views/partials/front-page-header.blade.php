@@ -32,8 +32,8 @@
                                 <h2 class="display-5 fw-bolder text-white mb-2">@php the_title() @endphp</h2>
                                 @if ( has_excerpt() ) @php echo '<p class="lead text-white mb-4">' . get_the_excerpt() . '</p>' @endphp @endif
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                                    <a class="btn btn-dark btn-lg px-4 me-sm-3" href="/contact/">@php echo esc_html__( 'Get Started', 'hamanami' ) @endphp</a>
-                                    <a class="btn btn-outline-light btn-lg px-4" href="/services/">@php echo esc_html__( 'Learn More', 'hamanami' ) @endphp</a>
+                                    <a class="btn btn-dark btn-lg px-4 me-sm-3" href="{{ home_url('/') }}contact/">@php echo esc_html__( 'Get Started', 'hamanami' ) @endphp</a>
+                                    <a class="btn btn-outline-light btn-lg px-4" href="{{ home_url('/') }}services/">@php echo esc_html__( 'Learn More', 'hamanami' ) @endphp</a>
                                 </div>
                             </div>
                         </div>

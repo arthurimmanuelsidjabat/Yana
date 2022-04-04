@@ -13,13 +13,13 @@
             {!! get_search_form(false) !!}
         @endif
 
-        <div class="row">
+        <div class="row gx-5">
             
         
         @while(have_posts()) @php(the_post())
 
-            <article @php(post_class(array('col-lg-4 mb-5 mb-lg-4'))) itemtype="https://schema.org/CreativeWork" itemscope>
-                <div class="card h-100">
+            <article @php(post_class(array('col-lg-4 mb-5'))) itemtype="https://schema.org/CreativeWork" itemscope>
+                <div class="card h-100 border-0 shadow-mg">
                     @if ( has_post_thumbnail () )
                         {!!
                             the_post_thumbnail( 'w600',

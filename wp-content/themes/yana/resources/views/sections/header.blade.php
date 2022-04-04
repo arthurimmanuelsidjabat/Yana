@@ -5,9 +5,9 @@
                 <div class="col-4">
 
                     @if ( !is_front_page() )
-                    <p class="h6 mb-0"><a class="navbar-brand" href="{{ home_url('/') }}">{!! $siteName !!}</a></p>
+                    <p class="h6 mb-0"><a class="navbar-brand" href="{{ home_url('/') }}">☕ {!! $siteName !!}</a></p>
                     @else
-                    <h1 class="h6 mb-0"><a class="navbar-brand" href="{{ home_url('/') }}">{!! $siteName !!}</a></h1>
+                    <h1 class="h6 mb-0"><a class="navbar-brand" href="{{ home_url('/') }}">☕ {!! $siteName !!}</a></h1>
                     @endif
 
                 </div>

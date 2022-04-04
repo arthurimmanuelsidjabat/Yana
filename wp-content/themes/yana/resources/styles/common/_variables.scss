@@ -28,6 +28,12 @@
     }
 }
 
+// Cards
+.shadow-mg {
+    transition: background .3s,border .3s,border-radius .3s,box-shadow .3s,-webkit-border-radius .3s,-webkit-box-shadow .3s !important;
+    box-shadow: 0 0 1.75rem 0 rgba(0,0,0,0.11) !important;
+}
+
 // Content
 @include media-breakpoint-up(sm) {
     .single {
@@ -36,6 +42,41 @@
                 max-width: 768px;
             }
         }
+    }
+}
+
+// 404
+.page-error-404 {
+    & h1 {
+        color: #eee;
+        display: block;
+        font-size: 8.75rem;
+        font-weight: 800;
+        line-height: 0.8;
+        margin-bottom: 1.25rem;
+    }
+}
+.p-b-150 {
+    padding-bottom: 9.375rem !important;
+}
+.m-t-80 {
+    margin-top: 5rem !important;
+}
+.text-medium {
+    font-size: 1.875rem !important;
+    font-weight: 700;
+    line-height: 1.1;
+}
+@include media-breakpoint-up(lg) {
+    .page-error-404 {
+        & h1 {
+            font-size: 18.75rem;
+            line-height: 0.7;
+            margin-bottom: 0;
+        }
+    }
+    .text-medium {
+        font-size: 3.125rem !important;
     }
 }
 

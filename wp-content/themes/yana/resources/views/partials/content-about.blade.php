@@ -37,7 +37,7 @@
                 @while ($query->have_posts())
                 @php $query->the_post() @endphp
                 <div class="col-lg-4 mb-5 mb-lg-3">
-                    <div class="card h-100">
+                    <div class="card h-100 border-0 shadow-mg">
                         @if ( has_post_thumbnail () )
                             {!!
                                 the_post_thumbnail( 'full',
