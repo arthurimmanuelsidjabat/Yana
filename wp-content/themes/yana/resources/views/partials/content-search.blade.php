@@ -6,12 +6,13 @@
                     {!! $title !!}
                 </a>
             </h3>
-
-            @includeWhen(get_post_type() === 'post', 'partials.entry-meta')
         </header>
 
         <div class="entry-summary card-body p-4">
             {!! the_excerpt() !!}
+        </div>
+        <div class="card-footer bg-transparent border-top-0 px-4">
+            @includeWhen(get_post_type() === 'post', 'partials.entry-meta')
         </div>
     </div>
 </article>

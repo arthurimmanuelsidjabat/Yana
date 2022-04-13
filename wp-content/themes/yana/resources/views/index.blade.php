@@ -34,6 +34,11 @@
                         @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
 
                     </div>
+                    <div class="card-footer bg-transparent border-top-0 px-4">
+
+                        @includeWhen(get_post_type() === 'post', 'partials.entry-meta')
+
+                    </div>
                 </div>
             </article>
 
