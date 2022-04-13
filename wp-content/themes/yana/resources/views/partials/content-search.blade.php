@@ -1,4 +1,4 @@
-<article @php(post_class( array('col-lg-6 mb-5') ))>
+<article @php(post_class('col-lg-4 mb-5 mb-lg-4')) itemtype="https://schema.org/CreativeWork" itemscope>
     <div class="card h-100">
         <header class="card-header bg-white p-4">
             <h3 class="entry-title">
@@ -11,7 +11,7 @@
         </header>
 
         <div class="entry-summary card-body p-4">
-            @php(the_excerpt())
+            {!! the_excerpt() !!}
         </div>
     </div>
 </article>
