@@ -6,9 +6,9 @@
             <div class="col-lg-9 col-xl-7">
                 <div class="text-lg-center">
                     <h2 class="h1">@php echo esc_html__( '☕', 'hamanami' ) @endphp</h2>
-                    <h2 class="h1 mb-3">@php echo esc_html__( 'Maximise Your Business Potentials', 'hamanami' ) @endphp</h2>
-                    <p class="mb-0">@php echo esc_html__( 'To make sure that you have a seamless experience in starting a business.', 'hamanami' ) @endphp</p>
-                    <p class="mb-0">@php echo esc_html__( 'Through our full range of our services, you can have peace of mind and enjoy hasle-free market entry activities.', 'hamanami' ) @endphp</p>
+                    <h2 class="h1 mb-3">@php echo esc_html__( 'Mauris Vitae Tortor Condimentum', 'hamanami' ) @endphp</h2>
+                    <p class="mb-0">@php echo esc_html__( 'Nisl purus in mollis nunc sed id semper. Amet consectetur adipiscing elit.', 'hamanami' ) @endphp</p>
+                    <p class="mb-0">@php echo esc_html__( 'Pellentesque elit ullamcorper dignissim cras tincidunt lobortis pharetra vel turpis.', 'hamanami' ) @endphp</p>
                 </div>
             </div>
         </div>
