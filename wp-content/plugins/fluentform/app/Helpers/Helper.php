@@ -553,12 +553,51 @@ class Helper
         }
         return site_url('?'.$paramKey.'=' . $formId);
     }
-
+    
+    public static function fileUploadLocations()
+    {
+        $locations = array(
+            array(
+                'value' => 'default',
+                'label' => __('Fluentforms Default', 'fluentform'),
+            ),
+            array(
+                'value' => 'wp_media',
+                'label' => __('Media Library', 'fluentform'),
+            ),
+        );
+        
+        return apply_filters('fluentform_file_upload_options', $locations);
+        
+    }
+    
     private function unreadCount($formId)
     {
         return wpFluent()->table('fluentform_submissions')
             ->where('status', 'unread')
             ->where('form_id', $formId)
             ->count();
+    }
+
+    public static function getForms()
+    {
+        $ff_list = wpFluent()->table('fluentform_forms')
+            ->select(['id', 'title'])
+            ->orderBy('id', 'DESC')
+            ->get();
+
+
+        $forms = array();
+
+        if ($ff_list) {
+            $forms[0] = esc_html__('Select a Fluent Forms', 'fluentform');
+            foreach ($ff_list as $form) {
+                $forms[$form->id] = esc_html($form->title) .' ('.$form->id.')';
+            }
+        } else {
+            $forms[0] = esc_html__('Create a Form First', 'fluentform');
+        }
+
+        return $forms;
     }
 }

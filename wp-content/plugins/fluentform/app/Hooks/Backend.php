@@ -228,6 +228,22 @@ add_action('fluentform_loading_editor_assets', function ($form) {
             return $element;
         });
     }
+    
+    $upgradableFileInputs = [
+        'input_file',
+        'input_image',
+    ];
+    foreach ($upgradableFileInputs as $upgradeElement) {
+        add_filter('fluentform_editor_init_element_' . $upgradeElement, function ($element) {
+            if (!isset($element['settings']['upload_file_location'])) {
+                $element['settings']['upload_file_location'] = 'default';
+            };
+            if (!isset($element['settings']['file_location_type'])) {
+                $element['settings']['file_location_type'] = 'follow_global_settings';
+            };
+            return $element;
+        });
+    }
 
     add_filter('fluentform_editor_init_element_gdpr_agreement', function ($element) {
         if (!isset($element['settings']['required_field_message'])) {
@@ -340,10 +356,45 @@ add_action('fluentform_addons_page_render_fluentform_pdf', function () {
         );
     }
 
-    echo \FluentForm\View::make('admin.addons.pdf_promo', [
+    \FluentForm\View::render('admin.addons.pdf_promo', [
         'install_url'  => $url,
         'is_installed' => defined('FLUENTFORM_PDF_VERSION')
     ]);
 });
 
+//Add file upload location in global settings
+add_filter('fluentform_get_global_settings_values', function ($values, $key) {
+    if(is_array($key) && in_array('_fluentform_global_form_settings',$key)){
+        $values['file_upload_optoins'] = FluentForm\App\Helpers\Helper::fileUploadLocations();
+    }
+    return $values;
+}, 10, 2);
+
+//Enables recaptcha validation when autoload recaptcha enabled for all forms
+$autoIncludeRecaptcha = [
+    [
+        'type'=>'hcaptcha',
+        'is_disabled'=>!get_option('_fluentform_hCaptcha_keys_status', false)
+    ],
+    [
+        'type'=>'recaptcha',
+        'is_disabled'=>!get_option('_fluentform_reCaptcha_keys_status', false)
+    ],
+];
+
+foreach ($autoIncludeRecaptcha as $input) {
+    if($input['is_disabled']){
+        continue;
+    }
+    add_filter('ff_has_auto_' . $input['type'], function () use ($input) {
+        $option = get_option('_fluentform_global_form_settings');
+        $autoload = \FluentForm\Framework\Helpers\ArrayHelper::get($option, 'misc.autoload_captcha');
+        $type = \FluentForm\Framework\Helpers\ArrayHelper::get($option, 'misc.captcha_type');
+        
+        if ($autoload && $type == $input['type']) {
+            return true;
+        }
+        return false;
+    });
+}
 

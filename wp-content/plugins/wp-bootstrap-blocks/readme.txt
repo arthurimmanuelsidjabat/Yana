@@ -3,9 +3,9 @@ Contributors: liip, tschortsch
 Donate link: https://liip.ch/
 Tags: gutenberg, blocks, bootstrap
 Requires at least: 5.0
-Tested up to: 5.9
+Tested up to: 6.0
 Requires PHP: 5.6
-Stable tag: 4.0.1
+Stable tag: 4.2.1
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -142,6 +142,26 @@ Please create a new GitHub issue and let us know: [https://github.com/liip/boots
 1. Container block
 
 == Changelog ==
+
+= 4.2.1 =
+
+**NOTICE:** Version 4.x of the plugin will be the last version to support WordPress versions lower than 5.3.
+If you're on a lower version of WordPress think about updating it if you still would like receive updates for this plugin.
+
+* [FIX] Rename blocks to `<Blockname> (Bootstrap)` for better discoverability when searching for a block.
+
+= 4.2.0 =
+
+* [FEATURE] Reflect noGutters and horizontalGutters options visually in editor  (WordPress >= 5.4).
+* [CHANGE] Add missing "Medium" size to vertical gutter options. If you're using the [`wpBootstrapBlocks.row.verticalGuttersOptions`](https://github.com/liip/bootstrap-blocks-wordpress-plugin#wpbootstrapblocksrowverticalguttersoptions) JavaScript filter to modify the options please check if the new option (`gy-4`) doesn't conflict with your custom options.
+* [FIX] Fix label of default css grid gutter option ("Medium" instead of "None").
+* [FIX] Only allow enabling CSS grid option if Bootstrap version is >= 5.
+
+= 4.1.0 =
+
+* [COMPATIBILITY] Tested up to WordPress 6.0.
+* [CHANGE] Prefix all block names with "Bootstrap" to make them distinguishable with other blocks.
+* [FIX] Manually set box-sizing attribute to blocks (has been removed in WordPress 6.0).
 
 = 4.0.1 =
 

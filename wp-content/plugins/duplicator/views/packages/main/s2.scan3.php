@@ -24,7 +24,7 @@ ARCHIVE -->
 </div>
 
 <div class="scan-header scan-item-first">
-	<i class="far fa-copy fa-sm"></i>
+	<i class="fas fa-folder-open"></i>
 	<?php esc_html_e("Files", 'duplicator'); ?>
 	
 	<div class="scan-header-details">
@@ -358,39 +358,13 @@ UNREADABLE FILES -->
 
 <?php } ?>
 
-<!-- ======================
-Restore only package -->
-<div id="migratepackage-block"  class="scan-item">
-	<div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
-		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Migration Status', 'duplicator');?></div>
-        <div id="data-arc-status-migratepackage"></div>
-	</div>
-    <div class="info">
-        <script id="hb-migrate-package-result" type="text/x-handlebars-template">
-            <div class="container">
-                <div class="data">					
-                    {{#if ARC.Status.CanbeMigratePackage}}
-                        <?php esc_html_e("The package created here can be migrated to the new server.", 'duplicator'); ?>
-                    {{else}}
-                        <span style="color: red;">
-                            <?php
-                            esc_html_e("The package that created here can't be migrated to the new server.
-                                The Package created here can be restored on the same server.", 'duplicator');
-                            ?>
-                        </span>
-                    {{/if}}			
-                </div>
-            </div>
-        </script>
-        <div id="migrate-package-result"></div>
-    </div>
-</div>
+
 
 <!-- ============
 DATABASE -->
 <div id="dup-scan-db">
 	<div class="scan-header">
-		<i class="fa fa-table fa-sm"></i>
+		<i class="fas fa-database fa-sm"></i>
 		<?php esc_html_e("Database", 'duplicator');	?>
 		<div class="scan-header-details">
 			<div class="dup-scan-filter-status">
@@ -616,7 +590,7 @@ DIALOG: Scan Results -->
 	<br/><br/>
 
 	<!-- DATABASE -->
-	<h2><i class="fa fa-table fa-sm"></i> <?php esc_html_e('Database', 'duplicator');?></h2>
+	<h2><i class="fas fa-database fa-sm"></i> <?php esc_html_e('Database', 'duplicator');?></h2>
 	<table id="db-area">
 		<tr><td><b><?php esc_html_e('Name:', 'duplicator');?></b></td><td><?php echo DB_NAME; ?> </td></tr>
 		<tr><td><b><?php esc_html_e('Host:', 'duplicator');?></b></td><td><?php echo DB_HOST; ?> </td></tr>

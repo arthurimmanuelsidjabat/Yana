@@ -27,16 +27,16 @@ class ShortCodeParser
         'submission'      => null
     ];
 
-    public static function parse($parsable, $entryId, $data = [], $form = null, $isUrl = false, $provider = false)
+    public static function parse($parsable, $entryId, $data = [], $form = null, $isUrl = false, $providerOrIsHTML = false)
     {
         try {
             static::setDependencies($entryId, $data, $form);
 
             if (is_array($parsable)) {
-                return static::parseShortCodeFromArray($parsable, $isUrl, $provider);
+                return static::parseShortCodeFromArray($parsable, $isUrl, $providerOrIsHTML);
             }
 
-            return static::parseShortCodeFromString($parsable, $isUrl, false);
+            return static::parseShortCodeFromString($parsable, $isUrl, $providerOrIsHTML);
 
         } catch (\Exception $e) {
             if (defined('WP_DEBUG') && WP_DEBUG) {
@@ -302,7 +302,7 @@ class ShortCodeParser
             return static::getUserAgent()->getPlatform();
         } elseif ($key == 'browser.name') {
             return static::getUserAgent()->getBrowser();
-        } elseif ($key == 'all_data') {
+        } elseif (in_array($key, ['all_data', 'all_data_without_hidden_fields'])) {
             $formFields = FormFieldsParser::getEntryInputs(static::getForm());
             if (apply_filters('fluentform_all_data_skip_password_field', __return_true())) {
                 $passwords = FormFieldsParser::getInputsByElementTypes(static::getForm(), ['input_password']);
@@ -310,6 +310,17 @@ class ShortCodeParser
                     ArrayHelper::forget($formFields, array_keys($passwords));
                 }
             }
+
+            $skipHiddenFields = ($key == 'all_data_without_hidden_fields') &&
+                                apply_filters('fluentform_all_data_without_hidden_fields', __return_true());
+
+            if ($skipHiddenFields) {
+                $hiddenFields = FormFieldsParser::getInputsByElementTypes(static::getForm(), ['input_hidden']);
+                if (is_array($hiddenFields) && !empty($hiddenFields)) {
+                    ArrayHelper::forget($formFields, array_keys($hiddenFields));
+                }
+            }
+
             $inputLabels = FormFieldsParser::getAdminLabels(static::getForm(), $formFields);
             $response = FormDataParser::parseFormSubmission(static::getEntry(), static::getForm(), $formFields, true);
 
@@ -325,6 +336,8 @@ class ShortCodeParser
             }
             $html .= '</tbody></table>';
             return apply_filters('fluentform_all_data_shortcode_html', $html, $formFields, $inputLabels, $response);
+        } elseif (strpos($key, 'pdf.download_link.') === 0) {
+            return apply_filters('fluentform_shortcode_parser_callback_pdf.download_link.public', $key, self::getInstance());
         }
 
         $groups = explode('.', $key);

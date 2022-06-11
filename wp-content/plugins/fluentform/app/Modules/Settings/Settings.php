@@ -45,7 +45,7 @@ class Settings
         } else {
             $values[$key] = get_option($key);
         }
-
+        $values = apply_filters('fluentform_get_global_settings_values', $values, $key);
         wp_send_json_success($values, 200);
     }
 
@@ -61,6 +61,7 @@ class Settings
             'storeMailChimpSettings',
             'storeEmailSummarySettings'
         ];
+        do_action('fluentform_saving_global_settings_with_key_method',$this->request);
 
         if (in_array($method, $allowedMethods)) {
             $this->{$method}();

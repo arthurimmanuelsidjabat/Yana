@@ -36,7 +36,8 @@ $rand_txt[0] = $atext0;
 
 <style>
 	a#dup-create-new {margin-left:-5px}
-    div#dup-progress-area {text-align:center; max-width:800px; min-height:200px;  border:1px solid silver; border-radius:3px; margin:25px auto 10px auto; padding:0px; box-shadow:0 8px 6px -6px #999;}
+    div#dup-progress-area {text-align:center; max-width:800px; min-height:200px;  border:1px solid silver; border-radius:3px; margin:25px auto 10px auto;
+                           padding:0px; box-shadow:0 8px 6px -6px #999;}
     div.dup-progress-title {font-size:22px;padding:5px 0 20px 0; font-weight:bold}
     div#dup-progress-area div.inner {padding:10px; line-height:22px}
     div#dup-progress-area h2.title {background-color:#efefef; margin:0px}
@@ -69,12 +70,13 @@ $rand_txt[0] = $atext0;
     div.dup-howto-exe {font-size:14px; font-weight:bold; margin:25px 0 40px 0;line-height:20px; color:#000; padding-top:10px;}
     div.dup-howto-exe-title {font-size:18px; margin:0 0 8px 0; color:#000}
     div.dup-howto-exe-title a {text-decoration:none; outline:none; box-shadow:none}
-    div.dup-howto-exe small {font-weight:normal; display:block; margin-top:-2px; font-style:italic; font-size:11px; color:#444 }
+    div.dup-howto-exe small {font-weight:normal; display:block; margin-top:-2px; font-style:italic; font-size:12px; color:#444 }
     div.dup-howto-exe a {margin-top:8px; display:inline-block}
-    div.dup-howto-exe-info {display:none; border:1px dotted #b5b5b5; padding:10px 20px 20px 20px; margin:auto; width:500px; background-color:#F0F0F1; border-radius:4px;}
+    div.dup-howto-exe-info {display:none; border:1px dotted #b5b5b5; padding:20px; margin:auto; width:500px; background-color:#F0F0F1; border-radius:4px;}
     div.dup-howto-exe-info a i {display:inline-block; margin:0 2px 0 2px}
     div.dup-howto-exe-area {display: flex; justify-content: center;}
     div.dup-howto-exe-txt {text-align: left; font-size:16px}
+    div.dup-howto-exe-txt sup.modes {font-weight: normal; color:#999; font-style: italic;}
     span#dup-installer-name {display:inline-block; color:silver; font-style: italic;}
     span#dup-installer-name a {text-decoration: none}
     span#dup-installer-name-help-icon {display:none}
@@ -86,7 +88,8 @@ $rand_txt[0] = $atext0;
     div.dup-box-panel {text-align:left}
     div.no-top {border-top:none}
     div.dup-box-panel b.opt-title {font-size:18px}
-    div.dup-msg-error-area {overflow-y:scroll; padding:5px 15px 15px 15px; max-height:170px; width:95%; border:1px solid silver; border-radius:4px; line-height:22px}
+    div.dup-msg-error-area {overflow-y:scroll; padding:5px 15px 15px 15px; height:100px; width:95%; border:1px solid #EEEEEE;
+                        border-radius:2px; line-height:22px; text-align: left; background-color: #FFFFF3}
     div#dup-logs {text-align:center; margin:auto; padding:5px; width:350px;}
     div#dup-logs a {display:inline-block;}
     span.sub-data {display:inline-block; padding-left:20px}
@@ -114,7 +117,7 @@ TOOL BAR:STEPS -->
                 <a id="dup-packages-btn" href="?page=duplicator" class="button <?php echo ($active_package_present ? 'no-display' :''); ?>">
                     <?php esc_html_e("Packages",'duplicator'); ?>
                 </a>
-            </span>                
+            </span>
             <?php
 			$package_url = admin_url('admin.php?page=duplicator&tab=new1');
 			$package_nonce_url = wp_nonce_url($package_url, 'new1-package');
@@ -127,7 +130,7 @@ TOOL BAR:STEPS -->
             </a>
         </td>
     </tr>
-</table>		
+</table>
 <hr class="dup-toolbar-line">
 
 
@@ -185,11 +188,11 @@ TOOL BAR:STEPS -->
 					</sup>
 				</div>
                 <div style="margin-top:20px; font-size:11px">
-                    <span id="dup-click-to-copy-installer-name" 
+                    <span id="dup-click-to-copy-installer-name"
                           class="link-style no-decoration"
                           data-dup-copy-text="<?php echo esc_attr(DUP_Installer::DEFAULT_INSTALLER_FILE_NAME_WITHOUT_HASH); ?>">
                         <?php esc_html_e("[Copy Installer Name to Clipboard]", 'duplicator'); ?>
-                        <i class="far fa-copy"></i> 
+                        <i class="far fa-copy"></i>
                     </span><br/>
                     <span id="dup-installer-name" data-installer-name="">
                         <a href="javascript:void(0)" onclick="Duplicator.Pack.ShowInstallerName()">
@@ -217,7 +220,7 @@ TOOL BAR:STEPS -->
                 }
             ?>
 
-			<div class="dup-howto-exe">               
+			<div class="dup-howto-exe">
                 <div class="dup-howto-exe-title" onclick="Duplicator.Pack.ToggleHelpInstall(this)">
                     <a href="javascript:void(0)">
                         <i class="far fa-plus-square"></i>
@@ -227,40 +230,47 @@ TOOL BAR:STEPS -->
                 <div class="dup-howto-exe-info">
                     <div class="dup-howto-exe-area">
                         <div class="dup-howto-exe-txt">
-                            <b style="font-size:18px"><?php esc_html_e("Featured Install Modes", 'duplicator');?></b>
+                            <b style="font-size:18px"><?php esc_html_e("Install Options", 'duplicator');?></b>
                             <br/>
 
                             <!-- CLASSIC -->
                             <i class="far fa-save fa-sm fa-fw"></i>
-                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help1_collapse&utm_campaign=duplicator_free#quick-040-q" target="_blank">
-                                <?php esc_html_e('Classic Install Feature', 'duplicator'); ?>
-                                <sup><i class="fas fa-external-link-alt fa-xs"></i></sup>
-                            </a><br/>
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help1_bwording&utm_campaign=duplicator_free#quick-040-q" target="_blank">
+                                <?php esc_html_e('Install to Empty Server Directory ', 'duplicator'); ?>
+                            </a>
+                            <sup class="modes">
+                                <i class="fas fa-external-link-alt fa-xs"></i>
+                            </sup>
+                            <br/>
 
                             <small>
                                 <?php
-                                    echo _e('Install to an empty server directory like a new WordPress install does.', 'duplicator');
+                                    _e('<b>Classic Mode:</b> Install to an empty server directory like a new WordPress install does.', 'duplicator');
                                 ?>
                             </small>
 
                             <!-- OVERWRITE -->
                             <i class="far fa-window-close fa-sm fa-fw"></i>
-                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help2_collapse&utm_campaign=duplicator_free#quick-043-q" target="_blank">
-                                <?php esc_html_e('Overwrite Install Feature', 'duplicator'); ?>
-                                <sup><i class="fas fa-external-link-alt fa-xs"></i></sup>
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help2_bwording&utm_campaign=duplicator_free#quick-043-q" target="_blank">
+                                <?php esc_html_e('Overwrite Existing Site', 'duplicator'); ?>
                             </a>
+                            <sup class="modes">
+                                <i class="fas fa-external-link-alt fa-xs"></i>
+                            </sup>
                             <br/>
-                            <small><?php esc_html_e("Quickly overwrite an existing WordPress site in a few clicks.", 'duplicator');?></small>
+                            <small><?php  _e("<b>Overwrite Mode:</b> Quickly overwrite an existing WordPress site in a few clicks.", 'duplicator');?></small>
 
 
                             <!-- IMPORT -->
-                            <i class="fas fa-download fa-sm fa-fw"></i>
-                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help3_collapse&utm_campaign=duplicator_free#quick-045-q" target="_blank">
-                                <?php esc_html_e('Import Install Feature', 'duplicator'); ?>
-                                <sup><i class="fas fa-external-link-alt fa-xs"></i></sup>
+                            <i class="fas fa-arrow-alt-circle-down fa-sm fa-fw"></i>
+                            <a href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help3_bwording&utm_campaign=duplicator_free#quick-045-q" target="_blank">
+                                <?php esc_html_e('Import Into &amp; Overwrite Existing Site', 'duplicator'); ?>
                             </a>
-                            <sup class="dup-new"><?php esc_html_e('Pro *', 'duplicator'); ?></sup><br/>
-                            <small><?php esc_html_e("Easily drag-n-drop the archive file to its destination (requires Pro*)", 'duplicator');?></small>
+                            <sup class="modes">
+                                <i class="fas fa-external-link-alt fa-xs"></i>
+                            </sup>
+                            <br/>
+                            <small><?php  _e("<b>Import Mode:</b> Easily drag-n-drop the archive file to its destination (requires Pro*)", 'duplicator');?></small>
 
                         </div>
                     </div>
@@ -276,18 +286,18 @@ TOOL BAR:STEPS -->
 		ERROR MESSAGE -->
 		<div id="dup-msg-error" style="display:none; color:#000">
 			<div class="done-title"><i class="fa fa-chain-broken"></i> <?php esc_html_e('Host Build Interrupt', 'duplicator'); ?></div>
-			<b><?php esc_html_e('This server cannot complete the build due to host setup constraints.', 'duplicator'); ?></b><br/>
-			<i><?php esc_html_e("To get past this hosts limitation consider the options below by clicking each section.", 'duplicator'); ?></i>
-			<br/><br/><br/>
+			<b><?php esc_html_e('This server cannot complete the build due to host setup constraints, see the error message for more details.', 'duplicator'); ?></b><br/>
+            <i><?php esc_html_e("If the error details are not specific consider the options below by clicking each section.", 'duplicator'); ?></i>
+            <br/><br/>
 
 			<!-- OPTION 1:Try DupArchive Engine -->
 			<div class="dup-box">
 				<div class="dup-box-title">
-                    <span style="width:20px; display:inline-block"><i class="far fa-check-circle"></i></span><?php esc_html_e('Option 1:Try DupArchive', 'duplicator'); ?>
+                    <i class="far fa-check-circle fa-sm fa-fw"></i>
+                    <?php esc_html_e('Option 1: DupArchive', 'duplicator'); ?>
 					<div class="dup-box-arrow"><i class="fa fa-caret-down"></i></div>
 				</div>
 				<div class="dup-box-panel" id="dup-pack-build-try1" style="display:none">
-					<!--<b class="opt-title"><?php esc_html_e('OPTION 1:', 'duplicator'); ?></b><br/>-->
 
 					<?php esc_html_e('Enable the DupArchive format which is specific to Duplicator and designed to perform better on constrained budget hosts.', 'duplicator'); ?>
 					<br/><br/>
@@ -295,7 +305,7 @@ TOOL BAR:STEPS -->
 					<div style="font-style:italic">
 						<?php esc_html_e('Note:DupArchive on Duplicator only supports sites up to 500MB.  If your site is over 500MB then use a file filter on step 1 to get the size '
 						. 'below 500MB or try the other options mentioned below.  Alternatively, you may want to consider',
-						'duplicator'); ?> 
+						'duplicator'); ?>
 						<a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&amp;utm_medium=wordpress_plugin&amp;utm_content=build_interrupt&amp;utm_campaign=duplicator_pro" target="_blank">
 							Duplicator Pro,
 						</a>
@@ -324,10 +334,11 @@ TOOL BAR:STEPS -->
 			<!-- OPTION 2:TRY AGAIN -->
 			<div class="dup-box  no-top">
 				<div class="dup-box-title">
-					<span style="width:20px; display:inline-block"><i class="fa fa-filter fa-sm"></i></span><?php esc_html_e('Option 2:File Filters', 'duplicator'); ?>
+					<i class="fas fa-filter fa-sm fa-fw"></i>
+                    <?php esc_html_e('Option 2: File Filters', 'duplicator'); ?>
 					<div class="dup-box-arrow"><i class="fa fa-caret-down"></i></div>
 				</div>
-				<div class="dup-box-panel" id="dup-pack-build-try2" style="display:none">
+				<div class="dup-box-panel" style="display:none">
 					<?php
 						esc_html_e('The first pass for reading files on some budget hosts maybe slow and have conflicts with strict timeout settings setup by the hosting provider.  '
 						. 'In these cases, it is recommended to retry the build by adding file filters to larger files/directories.', 'duplicator');
@@ -358,11 +369,11 @@ TOOL BAR:STEPS -->
 			<!-- OPTION 3:Two-Part Install -->
 			<div class="dup-box no-top">
 				<div class="dup-box-title">
-					<span style="width:20px; display:inline-block"><i class="fa fa-random"></i></span><?php esc_html_e('Option 3:Two-Part Install', 'duplicator'); ?>
+					<i class="fas fa-random fa-sm fa-fw"></i>
+                    <?php esc_html_e('Option 3: Two-Part Install', 'duplicator'); ?>
 					<div class="dup-box-arrow"><i class="fa fa-caret-down"></i></div>
 				</div>
-				<div class="dup-box-panel" id="dup-pack-build-try2" style="display:none">
-
+				<div class="dup-box-panel" style="display:none">
 
 					<?php esc_html_e('A two-part install minimizes server load and can avoid I/O and CPU issues encountered on some budget hosts. With this procedure you simply build a '
 						.'\'database-only\' archive, manually move the website files, and then run the installer to complete the process.', 'duplicator');
@@ -395,7 +406,8 @@ TOOL BAR:STEPS -->
 			<!-- OPTION 4:DIAGNOSE SERVER -->
 			<div class="dup-box no-top">
 				<div class="dup-box-title">
-                    <span style="width:20px; display:inline-block"><i class="fa fa-cog"></i></span><?php esc_html_e('Option 4:Configure Server', 'duplicator'); ?>
+                    <i class="fas fa-cog fa-sm fa-fw"></i>
+                    <?php esc_html_e('Option 4: Configure Server', 'duplicator'); ?>
 					<div class="dup-box-arrow"><i class="fa fa-caret-down"></i></div>
 				</div>
 				<div class="dup-box-panel" id="dup-pack-build-try3" style="display:none">
@@ -445,41 +457,51 @@ TOOL BAR:STEPS -->
 								   ?>"></i>
 							</span>
 						</div>
-
 						<div id="dup-msg-error-response-status">
 							<span class="label"><?php esc_html_e("Server Status:", 'duplicator'); ?></span>
-							<span class="data"></span>
+							<span class="data"><?php esc_html_e("unavailable", 'duplicator'); ?></span>
 						</div>
-						<div id="dup-msg-error-response-text">
-							<span class="label"><?php esc_html_e("Error Message:", 'duplicator'); ?></span><br/>
-							<span class="data"></span>
-						</div>
-					</div>
-
-					<!-- LOGS -->
-					<div id="dup-logs">
-						<br/>
-						<i class="fa fa-list-alt"></i>
-						<a href='javascript:void(0)' style="color:#000" onclick='Duplicator.OpenLogWindow(true)'><?php esc_html_e('Read Package Log File',
-									   'duplicator'); ?></a>
-						<br/><br/>
 					</div>
 				</div>
 			</div>
+            <br/><br/>
 
 
+            <!-- ERROR DETAILS-->
+			<div class="dup-box no-top">
+				<div class="dup-box-title" id="dup-pack-build-err-info" >
+					<i class="fas fa-file-contract fa-fw fa-sm"></i>
+                    <?php esc_html_e('System Details', 'duplicator'); ?>
+					<div class="dup-box-arrow"><i class="fa fa-caret-down"></i></div>
+				</div>
+				<div class="dup-box-panel" style="display:none">
+                    <span class="label"><?php esc_html_e("Error Message:", 'duplicator'); ?></span>
+                    <div class="dup-msg-error-area">
+                        <div id="dup-msg-error-response-text">
+                            <span class="data"><?php esc_html_e("Error status unavailable.", 'duplicator'); ?></span>
+                        </div>
+                    </div>
 
+                    <div id="dup-logs" style="color:maroon; font-size:16px">
+                        <br/>
+                        <i class="fas fa-file-contract fa-fw "></i>
+                        <a href='javascript:void(0)' style="color:maroon" onclick='Duplicator.OpenLogWindow(true)'>
+                            <?php esc_html_e('See Package Log For Complete Details', 'duplicator'); ?>
+                        </a>
+                    </div>
+				</div>
+			</div>
+            <br/><br/>
 
-			<br/><br/><br/>
 		</div>
+
 
 	</div>
 </div>
 </form>
 
 <script>
-jQuery(document).ready(function ($)
-{
+jQuery(document).ready(function ($) {
 
 	Duplicator.Pack.DupArchiveFailureCount = 0;
 	Duplicator.Pack.DupArchiveMaxRetries = 10;
@@ -490,8 +512,7 @@ jQuery(document).ready(function ($)
 	/*	----------------------------------------
 	 *	METHOD:Performs Ajax post to create a new package
 	 *	Timeout (10000000 = 166 minutes)  */
-	Duplicator.Pack.CreateZip = function ()
-	{
+	Duplicator.Pack.CreateZip = function ()	{
 		var startTime;
 		var data = {action:'duplicator_package_build', nonce:'<?php echo esc_js($zip_build_nonce); ?>'}
 		var statusInterval = setInterval(Duplicator.Pack.GetActivePackageStatus, Duplicator.Pack.StatusFrequency);
@@ -518,26 +539,30 @@ jQuery(document).ready(function ($)
 					$('#dup-progress-bar-area').hide();
 					$('#dup-progress-area, #dup-msg-error').show(200);
 					var status = xHr.status + ' -' + data.statusText;
-					var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1) ? xHr.responseText.trim() :'No client side error - see package log file';
+					var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1)
+                        ? xHr.responseText.trim()
+                        : 'No client side error - see package log file';
 					$('#dup-msg-error-response-status span.data').html(status)
 					$('#dup-msg-error-response-text span.data').html(response);
 					console.log(xHr);
 					return false;
 				}
-                
+
                 if ((data != null) && (typeof (data) != 'undefined') && data.status == 1) {
                     Duplicator.Pack.WireDownloadLinks(data);
                 } else {
                     var message = (typeof (data.error) != 'undefined' && data.error.length) ? data.error :'Error processing package';
                     Duplicator.Pack.DupArchiveProcessingFailed(message);
                 }
-                
+
 			},
 			error:function (xHr) {
 				$('#dup-progress-bar-area').hide();
 				$('#dup-progress-area, #dup-msg-error').show(200);
 				var status = xHr.status + ' -' + data.statusText;
-				var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1) ? xHr.responseText.trim() :'No client side error - see package log file';
+				var response = (xHr.responseText != undefined && xHr.responseText.trim().length > 1)
+                    ? xHr.responseText.trim()
+                    : 'No client side error - see package log file';
 				$('#dup-msg-error-response-status span.data').html(status)
 				$('#dup-msg-error-response-text span.data').html(response);
 				console.log(xHr);
@@ -548,12 +573,11 @@ jQuery(document).ready(function ($)
 
 	/*	----------------------------------------
 	 *	METHOD:Performs Ajax post to create a new DupArchive-based package */
-	Duplicator.Pack.CreateDupArchive = function ()
-	{
+	Duplicator.Pack.CreateDupArchive = function () {
 		console.log('Duplicator.Pack.CreateDupArchive');
 		var data = {action:'duplicator_duparchive_package_build', nonce:'<?php echo esc_js($duparchive_build_nonce); ?>'}
 		var statusInterval = setInterval(Duplicator.Pack.GetActivePackageStatus, Duplicator.Pack.StatusFrequency);
-        
+
 		$.ajax({
 			type:"POST",
 			timeout:0, // no timeout
@@ -579,7 +603,6 @@ jQuery(document).ready(function ($)
 				}
 
 				console.log("CreateDupArchive:AJAX success. Data equals:");
-
 				console.log(data);
 				// DATA FIELDS
 				// archive_offset, archive_size, failures, file_index, is_done, timestamp
@@ -603,7 +626,6 @@ jQuery(document).ready(function ($)
 							// Don't stop for non-critical failures - just display those at the end TODO:put these in the log not popup
 							console.log("CreateDupArchive:archive has completed");
 							if (data.failures.length > 0) {
-
 								console.log(data.failures);
 								var errorMessage = "CreateDupArchive:Problems during package creation. These may be non-critical so continue with install.\n------\n";
 								var len = data.failures.length;
@@ -623,7 +645,6 @@ jQuery(document).ready(function ($)
 							setTimeout(Duplicator.Pack.CreateDupArchive, 500);
 						}
 					} else {
-
 						console.log("CreateDupArchive:critical failures present");
 						// If we get a critical failure it means it's something we can't recover from so no purpose in retrying, just fail immediately.
 						var errorString = 'Error Processing Step 1<br/>';
@@ -658,8 +679,7 @@ jQuery(document).ready(function ($)
 
 	/*	----------------------------------------
 	 *	METHOD:Retrieves package status and updates UI with build percentage */
-	Duplicator.Pack.GetActivePackageStatus = function ()
-	{
+	Duplicator.Pack.GetActivePackageStatus = function () {
 		var data = {action:'DUP_CTRL_Package_getActivePackageStatus', nonce:'<?php echo wp_create_nonce('DUP_CTRL_Package_getActivePackageStatus'); ?>'}
 		console.log('####Duplicator.Pack.GetActivePackageStatus');
 
@@ -694,8 +714,7 @@ jQuery(document).ready(function ($)
 		return false;
 	}
 
-	Duplicator.Pack.PostTransferCleanup = function(statusInterval, startTime)
-	{
+	Duplicator.Pack.PostTransferCleanup = function(statusInterval, startTime) {
 		clearInterval(statusInterval);
 		endTime = new Date().getTime();
 		var millis = (endTime - startTime);
@@ -703,12 +722,9 @@ jQuery(document).ready(function ($)
 		var seconds = ((millis % 60000) / 1000).toFixed(0);
 		var status = minutes + ":" + (seconds < 10 ? '0' :'') + seconds;
 		$('#dup-msg-error-response-time span.data').html(status);
-		//$('#dup-create-area-nolink').hide();
-		//$('#dup-create-area-link').show();
 	};
 
-	Duplicator.Pack.WireDownloadLinks = function(data)
-	{
+	Duplicator.Pack.WireDownloadLinks = function(data) {
 		var pack = data.package;
 		var archive_json = {
 		    filename:pack.Archive.File,
@@ -727,7 +743,7 @@ jQuery(document).ready(function ($)
 		$('#data-time').text(data.runtime || 'unable to read time');
         $('#dup-create-new').removeClass('no-display');
         $('#dup-packages-btn').removeClass('no-display');
-        
+
 		//Wire Up Downloads
 		$('#dup-btn-installer').click(function() {
 		    Duplicator.Pack.DownloadInstaller(installer_json);
@@ -746,13 +762,12 @@ jQuery(document).ready(function ($)
 			}, 700);
 			return false;
 		});
-		
+
 		$('#dup-click-to-copy-installer-name').data('dup-copy-text', data.instDownloadName);
         $('#dup-installer-name').data('data-installer-name', data.instDownloadName);
 	};
 
-	Duplicator.Pack.HandleDupArchiveInterruption = function (errorText)
-	{
+	Duplicator.Pack.HandleDupArchiveInterruption = function (errorText)	{
 		Duplicator.Pack.DupArchiveFailureCount++;
 
 		if (Duplicator.Pack.DupArchiveFailureCount <= Duplicator.Pack.DupArchiveMaxRetries) {
@@ -767,17 +782,16 @@ jQuery(document).ready(function ($)
 		}
 	};
 
-	Duplicator.Pack.DupArchiveProcessingFailed = function (errorText)
-	{
+	Duplicator.Pack.DupArchiveProcessingFailed = function (errorText) {
 		$('#dup-progress-bar-area').hide();
 		$('#dup-progress-area, #dup-msg-error').show(200);
 		$('#dup-msg-error-response-text span.data').html(errorText);
+        $('#dup-pack-build-err-info').trigger('click');
 	};
 
 	Duplicator.Pack.GetFailureText = function (failures, onlyCritical)
 	{
 		var retVal = '';
-
 		if ((failures !== null) && (typeof failures !== 'undefined')) {
 			var len = failures.length;
 
@@ -818,7 +832,6 @@ jQuery(document).ready(function ($)
 		var txt = $('#dup-installer-name').data('data-installer-name');
         $('#dup-installer-name').html(txt);
         $('#dup-installer-name-help-icon').show();
-        
 	};
 
 	//Page Init:

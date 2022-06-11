@@ -352,6 +352,22 @@ class AddOnModule
                 'purchase_url' => $purchaseUrl,
                 'category'     => 'crm'
             ),
+            'airtable'      => array(
+                'title'        => 'Airtable',
+                'description'  => 'Airtable is a low-code platform for building collaborative apps. Customize your workflow, collaborate, and achieve ambitious outcomes.',
+                'logo'         => App::publicUrl('img/integrations/airtable.png'),
+                'enabled'      => 'no',
+                'purchase_url' => $purchaseUrl,
+                'category'     => 'crm'
+            ),
+            'mailjet'      => array(
+                'title'        => 'Mailjet',
+                'description'  => 'Mailjet is an easy-to-use all-in-one e-mail platform.',
+                'logo'         => App::publicUrl('img/integrations/mailjet.png'),
+                'enabled'      => 'no',
+                'purchase_url' => $purchaseUrl,
+                'category'     => 'crm'
+            ),
         );
     }
 }

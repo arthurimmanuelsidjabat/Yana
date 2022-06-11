@@ -100,7 +100,8 @@ if (!function_exists('fluentFormGetAllEditorShortCodes')) {
     {
         return apply_filters(
             'fluentform_all_editor_shortcodes',
-            EditorShortCode::getShortCodes($form)
+            EditorShortCode::getShortCodes($form),
+            $form
         );
     }
 }
@@ -230,4 +231,29 @@ function fluentFormGetRandomPhoto()
     $photoName = $photos[$selected];
 
     return fluentformMix('img/conversational/' . $photoName);
+}
+
+if (! function_exists('fluentFormRender')) {
+    function fluentFormRender($atts)
+    {
+        $shortcodeDefaults = array(
+            'id'                 => null,
+            'title'              => null,
+            'css_classes'        => '',
+            'permission'         => '',
+            'type'               => 'classic',
+            'permission_message' => __('Sorry, You do not have permission to view this form', 'fluentform')
+        );
+        $atts = shortcode_atts($shortcodeDefaults, $atts);
+
+        return (new \FluentForm\App\Modules\Component\Component(wpFluentForm()))->renderForm($atts);
+    }
+}
+
+/**
+ * Print internal content (not user input) without escaping.
+ */
+function fluentFormPrintUnescapedInternalString($string)
+{
+    echo $string; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }

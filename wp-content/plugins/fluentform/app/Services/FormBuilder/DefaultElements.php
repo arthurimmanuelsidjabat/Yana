@@ -525,6 +525,10 @@ $defaultElements = array(
                         'value' => '',
                         'message' => __('Maximum value is ', 'fluentform'),
                     ),
+                    'digits' => [
+                        'value' => '',
+                        'message' => __('The number of digits has to be ', 'fluentform'),
+                    ]
                 ),
                 'conditional_logics' => array(),
                 'calculation_settings' => array(
@@ -826,6 +830,8 @@ $defaultElements = array(
                 'admin_field_label' => '',
                 'label_placement' => '',
                 'btn_text' => 'Choose File',
+                'upload_file_location' => 'default',
+                'file_location_type' => 'follow_global_settings',
                 'help_message' => '',
                 'validation_rules' => array(
                     'required' => array(
@@ -871,6 +877,8 @@ $defaultElements = array(
                 'label_placement' => '',
                 'btn_text' => 'Choose File',
                 'help_message' => '',
+                'upload_file_location' => 'default',
+                'file_location_type' => 'follow_global_settings',
                 'validation_rules' => array(
                     'required' => array(
                         'value' => false,
