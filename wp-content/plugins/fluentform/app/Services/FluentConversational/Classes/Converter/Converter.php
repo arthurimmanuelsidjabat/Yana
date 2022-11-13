@@ -178,7 +178,7 @@ class Converter
                 $dateField = new DateTime();
 
                 wp_enqueue_style('flatpickr', $app->publicUrl('libs/flatpickr/flatpickr.min.css'));
-                wp_enqueue_script('flatpickr', $app->publicUrl('libs/flatpickr/flatpickr.js'), [], false, true);
+                wp_enqueue_script('flatpickr', $app->publicUrl('libs/flatpickr/flatpickr.min.js'), [], false, true);
 
                 $question['dateConfig'] = json_decode($dateField->getDateFormatConfigJSON($field['settings'], $form));
                 $question['dateCustomConfig'] = $dateField->getCustomConfig($field['settings']);
@@ -432,28 +432,23 @@ class Converter
 
     public static function convertExistingForm($form)
     {
-        $form = (array) $form;
-
-        $formFields = json_decode($form['form_fields'], true);
+        $formFields = json_decode($form->form_fields, true);
         $fields = $formFields['fields'];
         $formattedFields = [];
 
-        $allowedFields = static::fieldTypes();
         if (is_array($fields) && ! empty($fields)) {
             foreach ($fields as $field) {
-                if (ArrayHelper::get($allowedFields, $field['element'])) {
-                    if (! ArrayHelper::exists($field, 'style_pref')) {
-                        $field['style_pref'] = [
-                            'layout'           => 'default',
-                            'media'            => fluentFormGetRandomPhoto(),
-                            'brightness'       => 0,
-                            'alt_text'         => '',
-                            'media_x_position' => 50,
-                            'media_y_position' => 50,
-                        ];
-                    }
-                    $formattedFields[] = $field;
+                if (! ArrayHelper::exists($field, 'style_pref')) {
+                    $field['style_pref'] = [
+                        'layout'           => 'default',
+                        'media'            => fluentFormGetRandomPhoto(),
+                        'brightness'       => 0,
+                        'alt_text'         => '',
+                        'media_x_position' => 50,
+                        'media_y_position' => 50,
+                    ];
                 }
+                $formattedFields[] = $field;
             }
         }
 
