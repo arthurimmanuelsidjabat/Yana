@@ -32,7 +32,7 @@ add_action( 'init', function() {
         [
             'singular' => 'Slider',
             'plural'   => 'Sliders',
-            'slug'     => 'slider',
+            'slug'     => 'slider', 
         ]
     );
 
