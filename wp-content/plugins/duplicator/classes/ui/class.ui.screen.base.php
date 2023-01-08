@@ -53,11 +53,11 @@ class DUP_UI_Screen
             ?>
             <style>
                 .link-style {
-                    color: <?php echo $colorScheme->colors[2]; ?>;
+                    color: #222222;
                 }
 
                 .link-style:hover {
-                    color: <?php echo $colorScheme->colors[3]; ?>;
+                    color: #222222;
                 }
             </style>
             <?php
